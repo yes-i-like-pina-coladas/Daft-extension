@@ -294,8 +294,6 @@
     const op = settings.opacity / 100;
     const svg = [];
 
-    // Defs for drop shadow on stops
-    svg.push(`<defs><filter id="dt-shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-opacity="0.25"/></filter></defs>`);
 
     // Lines
     const drawLine = (seg, color, width) => {
@@ -314,7 +312,7 @@
     // Stops / stations
     const dot = (p, fill, name, mode, line, r) => {
       if (!p) return;
-      svg.push(`<g class="transit-stop" data-name="${esc(name)}" data-mode="${mode}" data-line="${esc(line)}"><circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}" fill="${fill}" stroke="#fff" stroke-width="1.5" opacity="${op}" filter="url(#dt-shadow)"/></g>`);
+      svg.push(`<g class="transit-stop" data-name="${esc(name)}" data-mode="${mode}" data-line="${esc(line)}"><circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}" fill="${fill}" stroke="#fff" stroke-width="1.5" opacity="${op}"/></g>`);
     };
     for (const s of idx.railStations) dot(projected[s.i], colorForRailLine(s.props.line), s.props.name || 'Station', 'rail', s.props.line || 'rail', 3.5);
     for (const s of idx.luasStops)    dot(projected[s.i], colorForLuasLine(s.props.line), s.props.name || 'Luas Stop', 'luas', s.props.line || 'luas', 4);
@@ -323,12 +321,22 @@
     wireTooltips();
   }
 
+  let tooltipsWired = false;
   function wireTooltips() {
-    if (!svgOverlay) return;
-    svgOverlay.querySelectorAll('.transit-stop').forEach(g => {
-      g.addEventListener('mouseenter', e => showTip(e, g));
-      g.addEventListener('mouseleave', hideTip);
-      g.addEventListener('click', e => { e.stopPropagation(); showTip(e, g); });
+    if (!svgOverlay || tooltipsWired) return;
+    tooltipsWired = true;
+    
+    // Event delegation - 3 listeners total instead of 660+
+    svgOverlay.addEventListener('mouseenter', e => {
+      const g = e.target.closest('.transit-stop');
+      if (g) showTip(e, g);
+    }, true);
+    svgOverlay.addEventListener('mouseleave', e => {
+      if (e.target.closest('.transit-stop')) hideTip();
+    }, true);
+    svgOverlay.addEventListener('click', e => {
+      const g = e.target.closest('.transit-stop');
+      if (g) { e.stopPropagation(); showTip(e, g); }
     });
   }
   function showTip(e, g) {
@@ -464,7 +472,13 @@
   //  MAP OBSERVATION
   // ═══════════════════════════════════════════════════════════════════
 
+  let mapObserved = false;
+  let wheelTimer = null;
+  
   function observeMap() {
+    if (mapObserved) return; // Prevent duplicate listeners
+    mapObserved = true;
+    
     const tryRender = () => {
       if (overlayVisible) {
         MapAdapter.instanceAvailable ? MapAdapter.requestViewport() : scheduleRender();
@@ -473,7 +487,13 @@
 
     if (MapAdapter.container) {
       new ResizeObserver(tryRender).observe(MapAdapter.container);
-      MapAdapter.container.addEventListener('wheel',   () => setTimeout(tryRender, 120), { passive: true });
+      
+      // Debounced wheel - clear previous timer to prevent queue buildup
+      MapAdapter.container.addEventListener('wheel', () => {
+        if (wheelTimer) clearTimeout(wheelTimer);
+        wheelTimer = setTimeout(tryRender, 120);
+      }, { passive: true });
+      
       MapAdapter.container.addEventListener('mouseup',  () => setTimeout(tryRender, 200));
       MapAdapter.container.addEventListener('touchend', () => setTimeout(tryRender, 200), { passive: true });
     }
@@ -483,9 +503,9 @@
     setInterval(() => {
       if (location.href !== lastHref) {
         lastHref = location.href;
-        // SPA navigation: re-detect map container and overlay if needed
         MapAdapter.container = null;
         MapAdapter.found = false;
+        mapObserved = false; // Allow re-observing new container
         if (MapAdapter.detect()) {
           ensureOverlay();
           observeMap();
