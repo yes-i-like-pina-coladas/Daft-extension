@@ -1,0 +1,1077 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00344",
+        "name": "Tallaght",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.374685,
+          53.287523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00035",
+        "name": "Trinity College",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.258253746,
+          53.34527975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00070",
+        "name": "Charlemont",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.258704,
+          53.330585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00276",
+        "name": "Cowper",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.25335115,
+          53.31640107
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00278",
+        "name": "Milltown",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.251749984,
+          53.30967244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00354",
+        "name": "Red Cow",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.369919,
+          53.316725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00393",
+        "name": "Fettercairn",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.395935,
+          53.293487
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00361",
+        "name": "Bluebell",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.333883625,
+          53.32931856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00364",
+        "name": "Blackhorse",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.327563122,
+          53.33429937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00370",
+        "name": "Goldenbridge",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.313337881,
+          53.33595962
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00376",
+        "name": "Rialto",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.297416684,
+          53.33794453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00379",
+        "name": "Fatima",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.292785785,
+          53.33846258
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00401",
+        "name": "Four Courts",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.273660411,
+          53.34685189
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00431",
+        "name": "Mayor Square - NCI",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.243268029,
+          53.34920357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00433",
+        "name": "Spencer Dock",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.237126865,
+          53.34878043
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00437",
+        "name": "The Point",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.229183701,
+          53.34834821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00443",
+        "name": "Westmoreland",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.259086,
+          53.34637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00444",
+        "name": "O'Connell - GPO",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.259968,
+          53.348839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00479",
+        "name": "Grangegorman",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.27747,
+          53.357115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00480",
+        "name": "Cabra",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.282029723,
+          53.36432866
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00287",
+        "name": "Dundrum",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.245118882,
+          53.29242557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00293",
+        "name": "Sandyford",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.204714,
+          53.277533
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00296",
+        "name": "Kilmacud",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.224112,
+          53.283065
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00319",
+        "name": "Leopardstown Valley",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.198426,
+          53.258206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00326",
+        "name": "Carrickmines",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.171571547,
+          53.25440536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00330",
+        "name": "Laughanstown",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.154947316,
+          53.25063471
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00335",
+        "name": "Brides Glen",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.142724,
+          53.241879
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00338",
+        "name": "Cookstown",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.384038,
+          53.293311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00034",
+        "name": "Marlborough",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.257731582,
+          53.34924487
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00083",
+        "name": "Beechwood",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.25475,
+          53.320929
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00396",
+        "name": "Cheeverstown",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.406574,
+          53.291084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00416",
+        "name": "Fortunestown",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.424753138,
+          53.28431005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00418",
+        "name": "Saggart",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.437787,
+          53.28464
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00367",
+        "name": "Drimnagh",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.318285559,
+          53.33539132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00372",
+        "name": "Suir Road",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.307231258,
+          53.33659218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00409",
+        "name": "Abbey Street",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.258494272,
+          53.34859089
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00424",
+        "name": "Connolly",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.250119012,
+          53.351003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00440",
+        "name": "Harcourt",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.26283,
+          53.333631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00459",
+        "name": "Broombridge",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.29767,
+          53.372272
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00471",
+        "name": "Parnell",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.26050348,
+          53.35310526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00291",
+        "name": "Balally",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.236791,
+          53.286023
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00310",
+        "name": "Central Park",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.20389942,
+          53.27016803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00313",
+        "name": "Glencairn",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.210132292,
+          53.2663249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00316",
+        "name": "The Gallops",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.205947,
+          53.261063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00341",
+        "name": "Hospital",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.378766,
+          53.289374
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00031",
+        "name": "Dawson",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.25801984,
+          53.34217543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00059",
+        "name": "St. Stephen's Green",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.261319,
+          53.339197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00074",
+        "name": "Ranelagh",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.256072,
+          53.326145
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00351",
+        "name": "Kingswood",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.365506429,
+          53.30369079
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00412",
+        "name": "Citywest Campus",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.418820111,
+          53.28779976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00381",
+        "name": "James's",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.293237662,
+          53.34181261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00420",
+        "name": "Bus\u00e1ras",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.251598,
+          53.350045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00456",
+        "name": "Phibsborough",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.27902033,
+          53.36033055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00470",
+        "name": "O'Connell Upper",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.261151,
+          53.351612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00478",
+        "name": "Dominick",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.265573,
+          53.351245
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00481",
+        "name": "Broadstone - University",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.273802469,
+          53.35411632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00282",
+        "name": "Windy Arbour",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.250648379,
+          53.30174668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00322",
+        "name": "Ballyogan Wood",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.184472,
+          53.254982
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00332",
+        "name": "Cherrywood",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.145975,
+          53.245317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00356",
+        "name": "Kylemore",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.343697,
+          53.32652
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8230GA00347",
+        "name": "Belgard",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.374808,
+          53.299145
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00386",
+        "name": "Heuston",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.291618,
+          53.346697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00389",
+        "name": "Museum",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.286936,
+          53.347835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00398",
+        "name": "Smithfield",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.278080805,
+          53.3471135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00404",
+        "name": "Jervis",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.265275464,
+          53.34768301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8220GA00427",
+        "name": "George's Dock",
+        "mode": "luas",
+        "line": "Red"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.247569832,
+          53.34942861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "8250GA00297",
+        "name": "Stillorgan",
+        "mode": "luas",
+        "line": "Green"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -6.21036734,
+          53.27936144
+        ]
+      }
+    }
+  ]
+}

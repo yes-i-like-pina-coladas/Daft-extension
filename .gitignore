@@ -1,0 +1,18 @@
+# IDE and editor settings
+.claude/
+.vscode/
+.idea/
+*.sublime-*
+
+# Source data files (not needed for distribution)
+*.zip
+*.csv
+gtfs_*/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp

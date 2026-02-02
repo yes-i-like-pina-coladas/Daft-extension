@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="popup-header">
+    <div class="dt-header-top">
+      <img src="icons/icon48.png" class="dt-logo" alt="">
+      <div class="dt-header-text">
+        <span class="dt-app-name">Commute Check</span>
+        <span class="dt-tagline">Transit overlay for Daft.ie</span>
+      </div>
+    </div>
+    <div class="dt-master-row">
+      <span class="dt-master-label" id="dt-status-label">Off</span>
+      <label class="dt-master-switch">
+        <input type="checkbox" id="dt-enabled">
+        <span class="dt-master-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div id="popup-status"></div>
+
+  <div id="popup-body">
+    <div class="dt-layer-group">
+      <div class="dt-layer-toggle">
+        <div class="dt-layer-colors">
+          <span class="dt-color-bar" style="background:#E2383F"></span>
+          <span class="dt-color-bar" style="background:#00B259"></span>
+        </div>
+        <span class="dt-layer-label">Luas Lines</span>
+        <label class="dt-switch"><input type="checkbox" id="dt-luas-lines" checked><span class="dt-slider"></span></label>
+      </div>
+      <div class="dt-layer-toggle">
+        <div class="dt-layer-colors">
+          <span class="dt-color-dot" style="background:#E2383F"></span>
+          <span class="dt-color-dot" style="background:#00B259"></span>
+        </div>
+        <span class="dt-layer-label">Luas Stops</span>
+        <label class="dt-switch"><input type="checkbox" id="dt-luas-stops" checked><span class="dt-slider"></span></label>
+      </div>
+    </div>
+    <div class="dt-layer-group">
+      <div class="dt-layer-toggle">
+        <div class="dt-layer-colors">
+          <span class="dt-color-bar" style="background:#0b5e22"></span>
+        </div>
+        <span class="dt-layer-label">DART Lines</span>
+        <label class="dt-switch"><input type="checkbox" id="dt-dart-lines" checked><span class="dt-slider"></span></label>
+      </div>
+      <div class="dt-layer-toggle">
+        <div class="dt-layer-colors">
+          <span class="dt-color-dot" style="background:#0b5e22"></span>
+        </div>
+        <span class="dt-layer-label">DART Stations</span>
+        <label class="dt-switch"><input type="checkbox" id="dt-dart-stations" checked><span class="dt-slider"></span></label>
+      </div>
+    </div>
+    <div class="dt-layer-group">
+      <div class="dt-layer-toggle">
+        <div class="dt-layer-colors">
+          <span class="dt-color-bar" style="background:#6366F1"></span>
+        </div>
+        <span class="dt-layer-label">Irish Rail Lines</span>
+        <label class="dt-switch"><input type="checkbox" id="dt-rail-lines" checked><span class="dt-slider"></span></label>
+      </div>
+      <div class="dt-layer-toggle">
+        <div class="dt-layer-colors">
+          <span class="dt-color-dot" style="background:#6366F1"></span>
+        </div>
+        <span class="dt-layer-label">Irish Rail Stations</span>
+        <label class="dt-switch"><input type="checkbox" id="dt-rail-stations" checked><span class="dt-slider"></span></label>
+      </div>
+    </div>
+    <div class="dt-layer-group">
+      <div class="dt-group-header">Walking Radius</div>
+      <div class="dt-layer-toggle">
+        <span class="dt-layer-label">5 min (~360m)</span>
+        <label class="dt-switch"><input type="checkbox" id="dt-walk-5" checked><span class="dt-slider"></span></label>
+      </div>
+      <div class="dt-layer-toggle">
+        <span class="dt-layer-label">10 min (~720m)</span>
+        <label class="dt-switch"><input type="checkbox" id="dt-walk-10" checked><span class="dt-slider"></span></label>
+      </div>
+      <div class="dt-layer-toggle">
+        <span class="dt-layer-label">20 min (~1.44km)</span>
+        <label class="dt-switch"><input type="checkbox" id="dt-walk-20"><span class="dt-slider"></span></label>
+      </div>
+    </div>
+    <div class="dt-opacity-section">
+      <span class="dt-opacity-label">Opacity</span>
+      <input type="range" id="dt-opacity" min="10" max="100" value="75" step="5">
+      <span class="dt-opacity-val" id="dt-opacity-val">75%</span>
+    </div>
+  </div>
+
+  <div id="popup-attribution">
+    <details>
+      <summary>Data sources &amp; licence</summary>
+      <p>Contains Irish Public Sector Data licensed under
+      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+      <ul>
+        <li>Luas GTFS &mdash; <a href="https://www.transportforireland.ie/transitData/PT_Data.html" target="_blank" rel="noopener">NTA / TFI</a></li>
+        <li>Irish Rail GTFS &mdash; <a href="https://www.transportforireland.ie/transitData/PT_Data.html" target="_blank" rel="noopener">NTA / TFI</a></li>
+      </ul>
+      <p class="dt-data-update">Data last updated: February 2026</p>
+      <p class="dt-disclaimer">Unofficial overlay. Data provided as-is.</p>
+    </details>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
