@@ -13,7 +13,7 @@
 
   let mapInstance = null;
   let pollAttempts = 0;
-  const MAX_POLL = 80;
+  const MAX_POLL = 40;
 
   // ─── Strategy 1: React fiber traversal ───
   function findMapViaFiber() {
@@ -150,16 +150,64 @@
     }
   });
 
+  // ─── Smooth pan tracking ───
+  // We track two geo-anchors and their original pixel positions.
+  // Comparing where they end up during a gesture gives us the exact
+  // translate + scale the SVG needs — works for pan, zoom, and both.
+  let _isMoving = false;
+  let _anchorA = null; // { geo: [lng,lat], px: {x,y} }
+  let _anchorB = null; // second anchor for zoom detection
+
+  function sendPanDelta() {
+    if (!mapInstance || !_anchorA || !_anchorB) return;
+    try {
+      const aPx = mapInstance.project(_anchorA.geo);
+      const bPx = mapInstance.project(_anchorB.geo);
+
+      // Original pixel distance vs current pixel distance → scale
+      const origDist = _anchorB.px.x - _anchorA.px.x;
+      const nowDist  = bPx.x - aPx.x;
+      const scale = origDist !== 0 ? nowDist / origDist : 1;
+
+      // Translate: where anchorA is now vs where it was, after accounting for scale
+      // SVG transform is: translate(tx, ty) scale(s)  with origin 0,0
+      // So a point at original position P ends up at tx + P*s
+      // We want anchorA.px * s + tx = aPx  →  tx = aPx.x - anchorA.px.x * scale
+      const tx = aPx.x - _anchorA.px.x * scale;
+      const ty = aPx.y - _anchorA.px.y * scale;
+
+      window.postMessage({
+        type: 'DAFT_TRANSIT_PAN_DELTA',
+        payload: { tx, ty, scale }
+      }, '*');
+    } catch (e) {}
+  }
+
   function onMapFound(map) {
     mapInstance = map;
     window.postMessage({ type: 'DAFT_TRANSIT_MAP_FOUND' }, '*');
     sendViewport();
 
-    // Listen for map move/zoom
-    map.on('move', sendViewport);
-    map.on('zoom', sendViewport);
+    map.on('movestart', () => {
+      _isMoving = true;
+      // Pick two geo-anchors: map center and a point offset to the right
+      const bounds = map.getBounds();
+      const c = map.getCenter();
+      const eLng = bounds.getEast();
+      const midLng = c.lng + (eLng - c.lng) * 0.5;
+      _anchorA = { geo: [c.lng, c.lat], px: map.project([c.lng, c.lat]) };
+      _anchorB = { geo: [midLng, c.lat], px: map.project([midLng, c.lat]) };
+    });
+    map.on('move', () => {
+      if (_isMoving) sendPanDelta();
+    });
+    map.on('moveend', () => {
+      _isMoving = false;
+      _anchorA = null;
+      _anchorB = null;
+      sendViewport();
+    });
     map.on('resize', sendViewport);
-    map.on('moveend', sendViewport);
   }
 
   // ─── Polling ───
@@ -203,22 +251,24 @@
 
   // ─── DOM observer for late-appearing maps ───
   function observeForMaps() {
+    let pending = false;
     const observer = new MutationObserver(() => {
       if (mapInstance) { observer.disconnect(); return; }
-      const canvas = document.querySelector('.maplibregl-canvas, .mapboxgl-canvas');
-      if (canvas) {
-        // Canvas appeared — try finding the map instance after a short delay
-        setTimeout(() => {
-          if (!mapInstance) {
-            const map = findMapInstance();
-            if (map) { observer.disconnect(); onMapFound(map); }
-          }
-        }, 500);
-      }
+      if (pending) return; // Coalesce rapid mutations
+      pending = true;
+      setTimeout(() => {
+        pending = false;
+        if (mapInstance) { observer.disconnect(); return; }
+        const canvas = document.querySelector('.maplibregl-canvas, .mapboxgl-canvas');
+        if (canvas) {
+          const map = findMapInstance();
+          if (map) { observer.disconnect(); onMapFound(map); }
+        }
+      }, 300);
     });
     observer.observe(document.body, { childList: true, subtree: true });
-    // Auto-disconnect after 60s
-    setTimeout(() => observer.disconnect(), 60000);
+    // Auto-disconnect after 30s
+    setTimeout(() => observer.disconnect(), 30000);
   }
 
   // ─── Start ───

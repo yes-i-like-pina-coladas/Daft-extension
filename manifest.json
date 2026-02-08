@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Commute Check",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "See Luas, DART & Irish Rail on Daft.ie maps. Find homes near public transit. No data collected.",
   "permissions": ["storage"],
   "host_permissions": ["https://www.daft.ie/*"],

@@ -185,6 +185,7 @@
   let svgOverlay  = null;
   let tooltip     = null;
   let _pxPerMeter = 0;
+  let _isPanning  = false;
 
   function ensureOverlay() {
     const mc = MapAdapter.container;
@@ -211,10 +212,20 @@
     }));
   }
 
+  function _clearOverlayTransform() {
+    svgOverlay.style.transition = '';
+    svgOverlay.style.transform = '';
+    svgOverlay.style.transformOrigin = '';
+  }
+
   async function render(settings) {
+    if (_isPanning) return; // transform handles it during gestures
     if (!svgOverlay) { ensureOverlay(); if (!svgOverlay) return; }
+    // NOTE: Don't clear the CSS transform yet — the old content under the
+    // gesture transform still looks correct.  We clear it atomically with
+    // the innerHTML swap so there is no visible gap.
     const data = await TransitDataProvider.getAll();
-    if (!data) { svgOverlay.innerHTML = ''; return; }
+    if (!data) { _clearOverlayTransform(); svgOverlay.innerHTML = ''; return; }
 
     // Gather points
     const pts = [];
@@ -258,7 +269,7 @@
       addPointFeatures(filtered, 'railStations');
     }
 
-    if (pts.length === 0) { svgOverlay.innerHTML = ''; return; }
+    if (pts.length === 0) { _clearOverlayTransform(); svgOverlay.innerHTML = ''; return; }
 
     // Project
     let projected = null;
@@ -268,7 +279,7 @@
     }
     if (!projected) {
       const vp = MapAdapter.getViewport();
-      if (!vp) return;
+      if (!vp) { _clearOverlayTransform(); return; }
       projected = projectAll(pts, vp);
     }
 
@@ -317,6 +328,8 @@
     for (const s of idx.railStations) dot(projected[s.i], colorForRailLine(s.props.line), s.props.name || 'Station', 'rail', s.props.line || 'rail', 3.5);
     for (const s of idx.luasStops)    dot(projected[s.i], colorForLuasLine(s.props.line), s.props.name || 'Luas Stop', 'luas', s.props.line || 'luas', 4);
 
+    // Clear transform and swap content in the same JS turn — no visible gap
+    _clearOverlayTransform();
     svgOverlay.innerHTML = svg.join('');
     wireTooltips();
   }
@@ -435,11 +448,13 @@
 
   function scheduleRender() {
     if (renderTimer) return;
-    const wait = Math.max(0, 50 - (Date.now() - lastRender));
+    const wait = Math.max(0, 150 - (Date.now() - lastRender));
     renderTimer = setTimeout(() => {
       renderTimer = null;
       lastRender = Date.now();
-      if (overlayVisible && MapAdapter.found) render(settings);
+      if (overlayVisible && MapAdapter.found) {
+        requestAnimationFrame(() => render(settings));
+      }
     }, wait);
   }
 
@@ -474,11 +489,12 @@
 
   let mapObserved = false;
   let wheelTimer = null;
-  
+  let urlPollId = null;
+
   function observeMap() {
     if (mapObserved) return; // Prevent duplicate listeners
     mapObserved = true;
-    
+
     const tryRender = () => {
       if (overlayVisible) {
         MapAdapter.instanceAvailable ? MapAdapter.requestViewport() : scheduleRender();
@@ -487,20 +503,21 @@
 
     if (MapAdapter.container) {
       new ResizeObserver(tryRender).observe(MapAdapter.container);
-      
+
       // Debounced wheel - clear previous timer to prevent queue buildup
       MapAdapter.container.addEventListener('wheel', () => {
         if (wheelTimer) clearTimeout(wheelTimer);
-        wheelTimer = setTimeout(tryRender, 120);
+        wheelTimer = setTimeout(tryRender, 150);
       }, { passive: true });
-      
+
       MapAdapter.container.addEventListener('mouseup',  () => setTimeout(tryRender, 200));
       MapAdapter.container.addEventListener('touchend', () => setTimeout(tryRender, 200), { passive: true });
     }
 
     // URL polling (Daft updates bounds in URL on search pages)
+    if (urlPollId) clearInterval(urlPollId);
     let lastHref = location.href;
-    setInterval(() => {
+    urlPollId = setInterval(() => {
       if (location.href !== lastHref) {
         lastHref = location.href;
         MapAdapter.container = null;
@@ -512,7 +529,7 @@
         }
         tryRender();
       }
-    }, 300);
+    }, 500);
   }
 
   // ═══════════════════════════════════════════════════════════════════
@@ -534,20 +551,38 @@
         if (e.data.type === 'DAFT_TRANSIT_MAP_NOT_FOUND') {
           if (MapAdapter.found && overlayVisible) scheduleRender();
         }
-        if (e.data.type === 'DAFT_TRANSIT_MAP_VIEWPORT' && overlayVisible) scheduleRender();
+        if (e.data.type === 'DAFT_TRANSIT_MAP_VIEWPORT' && overlayVisible) {
+          // moveend arrived — allow re-render (transform cleared inside render())
+          _isPanning = false;
+          scheduleRender();
+        }
+        if (e.data.type === 'DAFT_TRANSIT_PAN_DELTA' && overlayVisible && svgOverlay) {
+          // Cheap CSS transform while panning — no DOM rebuild
+          _isPanning = true;
+          const { tx, ty, scale } = e.data.payload;
+          svgOverlay.style.transformOrigin = '0 0';
+          svgOverlay.style.transform = `translate(${tx.toFixed(1)}px, ${ty.toFixed(1)}px) scale(${scale.toFixed(6)})`;
+        }
       }
     });
 
-    // DOM watcher for map container
+    // DOM watcher for map container — disconnect once found
+    let domObserver = null;
     const check = () => {
       if (!MapAdapter.container && MapAdapter.detect()) {
         ensureOverlay();
         observeMap();
         if (overlayVisible) scheduleRender();
+        // Stop watching once we have the container
+        if (domObserver) { domObserver.disconnect(); domObserver = null; }
+        clearInterval(domPoll);
       }
     };
-    new MutationObserver(check).observe(document.body, { childList: true, subtree: true });
-    const poll = setInterval(() => { check(); if (MapAdapter.container) clearInterval(poll); }, 500);
+    domObserver = new MutationObserver(check);
+    domObserver.observe(document.body, { childList: true, subtree: true });
+    const domPoll = setInterval(check, 500);
+    // Safety: stop DOM watching after 30s regardless
+    setTimeout(() => { if (domObserver) { domObserver.disconnect(); domObserver = null; } clearInterval(domPoll); }, 30000);
     check();
   }
 
